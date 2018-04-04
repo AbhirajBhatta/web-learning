@@ -1,0 +1,29 @@
+<html>
+<p>Welcome to Abhi's Home page</p>
+<form action="/cgi-bin/abhi.py">
+Type your Name: <input type="text" name="username" >
+<input type="submit" value="Submit"> 
+</form>
+
+
+<img id="bulb" alt="" src="pic_bulboff.gif">
+
+<button onclick = "bon()"> turn on light</button>
+
+<button onclick = "boff()"> turn off light</button>
+
+
+
+<script type="text/javascript">
+
+function  bon() {
+	document.getElementById("bulb").src="pic_bulbon.gif"	
+}
+function  boff() {
+	document.getElementById("bulb").src="pic_bulboff.gif"	
+}
+
+
+</script>
+
+</html>

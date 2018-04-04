@@ -1,0 +1,59 @@
+sudo service apache2 stop
+sudo service apache2 start
+sudo service apache2 restart
+sudo service apache2 status
+
+
+#to check logs
+sudo tail -f /var/log/apache2/error.log
+
+#to edit conf file
+
+under /etc/apache2/sites-enabled/abhi.conf  
+
+each conf file is a web site . They are named and identified here 
+<VirtualHost abhi.com:80>
+
+# Want to edit from Eclispe , set the permissions from shell
+cd /etc/apache2/sites-enabled/
+sudo chown root:ubuntu abhi.conf 
+sudo chmod 664 abhi.conf 
+
+
+
+# to give a site name ,a to append 
+sudo vi /etc/hosts
+127.0.1.1       udesktop        ubuntu  abhi.com
+
+
+#Enable cgi bin 
+
+a2enmod cgid
+
+#check what all modules are enbaled
+apache2ctl -M
+
+#As per /etc/apache2/conf-enabled/serve-cgi-bin.conf setting 
+
+#The cgi-bin folder has to be under /usr/lib/cgi-bin so  abhi.py file shoudld be there . 
+#We have to check how we can change the folder later
+
+
+#Give it execution permission
+
+cd /usr/lib/cgi-bin
+sudo chmod +x abhi.py
+
+#give write permission from user ubuntu so that you can edit from eclispse
+sudo chown root:ubuntu abhi.py
+sudo chmod 664 abhi.py
+
+
+#In both folder of htmll and cgi-bin keep a .htaccess file with the following content 
+
+sudo vi /usr/lib/cgi-bin/.htaccess
+Options +ExecCGI
+AddHandler cgi-script .py
+
+
+<img id="" alt="" src="">
